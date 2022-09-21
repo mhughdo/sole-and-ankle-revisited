@@ -14,7 +14,18 @@ const ShoeIndex = ({ sortId, setSortId }) => {
     <Wrapper>
       <MainColumn>
         <Header>
-          <Title>Running</Title>
+          <TitleWrapper>
+            <BreadcrumbsWrapper>
+              <Breadcrumbs>
+                <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
+                <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
+                <Breadcrumbs.Crumb href="/sale/shoes">
+                  Shoes
+                </Breadcrumbs.Crumb>
+              </Breadcrumbs>
+            </BreadcrumbsWrapper>
+            <Title>Running</Title>
+          </TitleWrapper>
           <Select
             label="Sort"
             value={sortId}
@@ -42,6 +53,16 @@ const ShoeIndex = ({ sortId, setSortId }) => {
   );
 };
 
+const TitleWrapper = styled.div`
+
+`
+const BreadcrumbsWrapper = styled.div`
+  display: none;
+  @media ${(props) => props.theme.queries.tabletAndBelow} {
+    display: block;
+  }
+`
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row-reverse;
@@ -51,6 +72,9 @@ const Wrapper = styled.div`
 
 const LeftColumn = styled.div`
   flex-basis: 248px;
+   @media ${(props) => props.theme.queries.tabletAndBelow} {
+    display: none;
+  }
 `;
 
 const MainColumn = styled.div`
@@ -61,6 +85,9 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+   @media ${(props) => props.theme.queries.tabletAndBelow} {
+    align-items: center;
+  }
 `;
 
 const Title = styled.h2`
